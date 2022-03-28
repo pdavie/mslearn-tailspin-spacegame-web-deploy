@@ -36,7 +36,7 @@ stages:
     variables:
     - group: Release
     steps:
-    - task AzureWebAppContainer@1
+    - task: AzureWebAppContainer@1
       inputs:
         appName: $(WebAppName)
         azureSubscription: 'Resource Manager - Tailspin - Space Game'
