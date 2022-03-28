@@ -1,4 +1,3 @@
-
 trigger:
 - '*'
 
@@ -17,15 +16,15 @@ stages:
       vmImage: 'ubuntu-20.04'
     steps:
     - task: Docker@2
-    displayName: 'Build and push the image to the container registry'
-    inputs:
-      command: buildAndPush
-      buildContext: $(Build.Repository.LocalPath)
-      repository: $(webRepository)
-      dockerFile: '$(Build.SourceDirectory)/Tailspin.SpaceGame.Web/Dockerfile'
-      containerRegistry: 'Container Registry Connection'
-      tags: |
-        $(tag)
+      displayName: 'Build and push the image to the container registry'
+      inputs:
+        command: buildAndPush
+        buildContext: $(Build.Repository.LocalPath)
+        repository: $(webRepository)
+        dockerFile: '$(Build.SourceDirectory)/Tailspin.SpaceGame.Web/Dockerfile'
+        containerRegistry: 'Container Registry Connection'
+        tags: |
+          $(tag)
 - stage: 'Deploy'
   displayName: 'Deploy the container'
   dependsOn: Build
